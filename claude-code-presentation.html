@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Ecosystem for Chief People & Legal Officer | monday.com</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Crimson+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --monday-purple: #6161FF;
+            --monday-dark: #181B34;
+            --monday-light: #F0F3FF;
+            --monday-green: #00CA72;
+            --monday-yellow: #FFCC00;
+            --monday-red: #FB275D;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--monday-dark);
+            color: var(--monday-dark);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .presentation-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 4rem 2rem;
+            overflow: hidden;
+        }
+
+        /* Navigation */
+        .nav-dots {
+            position: fixed;
+            right: 3rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .nav-dot.active {
+            background: var(--monday-purple);
+            transform: scale(1.4);
+            border-color: var(--white);
+        }
+
+        .nav-dot:hover {
+            background: var(--monday-purple);
+            transform: scale(1.2);
+        }
+
+        /* Slide 1 - Hero */
+        .slide-1 {
+            background: linear-gradient(135deg, var(--monday-dark) 0%, #2a2d4f 100%);
+            color: var(--white);
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 5.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--white) 0%, var(--monday-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--monday-light);
+            margin-bottom: 3rem;
+            font-family: 'Crimson Pro', serif;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .hero-badge {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-badge.primary {
+            background: var(--monday-purple);
+            color: var(--white);
+        }
+
+        .hero-badge.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Slide 2 - Ecosystem */
+        .slide-2 {
+            background: var(--monday-light);
+        }
+
+        .ecosystem-container {
+            max-width: 1600px;
+            width: 100%;
+        }
+
+        .ecosystem-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .ecosystem-header h2 {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--monday-dark);
+            margin-bottom: 1rem;
+        }
+
+        .ecosystem-header p {
+            font-size: 1.4rem;
+            color: #666;
+            font-family: 'Crimson Pro', serif;
+        }
+
+        .ecosystem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .ecosystem-card {
+            background: var(--white);
+            border-radius: 32px;
+            padding: 3rem;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(97, 97, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .ecosystem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(97, 97, 255, 0.2);
+        }
+
+        .ecosystem-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ecosystem-card:nth-child(1) .ecosystem-icon {
+            background: linear-gradient(135deg, var(--monday-purple), var(--monday-red));
+        }
+
+        .ecosystem-card:nth-child(2) .ecosystem-icon {
+            background: linear-gradient(135deg, var(--monday-green), var(--monday-yellow));
+        }
+
+        .ecosystem-card:nth-child(3) .ecosystem-icon {
+            background: linear-gradient(135deg, var(--monday-yellow), var(--monday-red));
+        }
+
+        .ecosystem-card h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--monday-dark);
+            margin-bottom: 1rem;
+        }
+
+        .ecosystem-card .subtitle {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.15rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .ecosystem-features {
+            list-style: none;
+        }
+
+        .ecosystem-features li {
+            padding: 0.8rem 0;
+            font-size: 1rem;
+            color: var(--monday-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .ecosystem-features li::before {
+            content: '✓';
+            color: var(--monday-green);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .best-for {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--monday-light);
+            border-radius: 16px;
+            border-left: 4px solid var(--monday-purple);
+        }
+
+        .best-for strong {
+            display: block;
+            color: var(--monday-purple);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .best-for p {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.05rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Slide 3 - Skills */
+        .slide-3 {
+            background: var(--white);
+        }
+
+        .skills-container {
+            max-width: 1600px;
+            width: 100%;
+        }
+
+        .skills-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .skills-header h2 {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--monday-dark);
+            margin-bottom: 1rem;
+        }
+
+        .skills-header p {
+            font-size: 1.4rem;
+            color: #666;
+            font-family: 'Crimson Pro', serif;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--monday-dark);
+            color: var(--white);
+            border-radius: 24px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(97, 97, 255, 0.2) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-slash {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--monday-purple);
+            font-family: 'Courier New', monospace;
+            background: rgba(97, 97, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .skill-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .skill-desc {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-examples {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--monday-yellow);
+        }
+
+        .skill-examples strong {
+            display: block;
+            color: var(--monday-yellow);
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .skill-examples ul {
+            list-style: none;
+        }
+
+        .skill-examples li {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .skill-examples li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--monday-yellow);
+        }
+
+        .skill-card:nth-child(1) .skill-slash { color: var(--monday-green); background: rgba(0, 202, 114, 0.2); }
+        .skill-card:nth-child(2) .skill-slash { color: var(--monday-yellow); background: rgba(255, 204, 0, 0.2); }
+        .skill-card:nth-child(3) .skill-slash { color: var(--monday-red); background: rgba(251, 39, 93, 0.2); }
+        .skill-card:nth-child(4) .skill-slash { color: var(--monday-purple); background: rgba(97, 97, 255, 0.2); }
+        .skill-card:nth-child(5) .skill-slash { color: var(--monday-green); background: rgba(0, 202, 114, 0.2); }
+        .skill-card:nth-child(6) .skill-slash { color: var(--monday-yellow); background: rgba(255, 204, 0, 0.2); }
+
+        /* Screenshot mockup */
+        .screenshot {
+            background: #f5f5f5;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .screenshot-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .screenshot-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .screenshot-dot:nth-child(1) { background: #ff5f56; }
+        .screenshot-dot:nth-child(2) { background: #ffbd2e; }
+        .screenshot-dot:nth-child(3) { background: #27c93f; }
+
+        .screenshot-content {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .screenshot-prompt {
+            color: var(--monday-purple);
+            font-weight: 600;
+        }
+
+        .screenshot-output {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        /* Slide 4 - Deep HR Use Cases */
+        .slide-4 {
+            background: linear-gradient(135deg, var(--monday-purple) 0%, #4949cc 100%);
+            color: var(--white);
+        }
+
+        .hr-cases-container {
+            max-width: 1600px;
+            width: 100%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.3rem;
+            font-family: 'Crimson Pro', serif;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .use-case-detailed {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .use-case-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .use-case-number {
+            width: 60px;
+            height: 60px;
+            background: var(--monday-yellow);
+            color: var(--monday-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .use-case-title-group h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .use-case-subtitle {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .use-case-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .use-case-description {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .use-case-description strong {
+            color: var(--monday-yellow);
+            display: block;
+            margin: 1.5rem 0 0.8rem 0;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .use-case-description ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .use-case-description li {
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            position: relative;
+        }
+
+        .use-case-description li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--monday-green);
+            font-weight: 700;
+        }
+
+        .use-case-visual {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .terminal-window {
+            background: #1e1e1e;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .terminal-header {
+            background: #323232;
+            padding: 0.8rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot:nth-child(1) { background: #ff5f56; }
+        .terminal-dot:nth-child(2) { background: #ffbd2e; }
+        .terminal-dot:nth-child(3) { background: #27c93f; }
+
+        .terminal-title {
+            flex: 1;
+            text-align: center;
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        .terminal-content {
+            padding: 1.5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .terminal-prompt {
+            color: var(--monday-green);
+        }
+
+        .terminal-command {
+            color: #fff;
+        }
+
+        .terminal-output {
+            color: #999;
+            margin-top: 0.5rem;
+        }
+
+        .terminal-success {
+            color: var(--monday-green);
+        }
+
+        .data-preview {
+            background: #2a2a2a;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: #ddd;
+            overflow-x: auto;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th {
+            background: var(--monday-purple);
+            padding: 0.5rem;
+            text-align: left;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .data-table td {
+            padding: 0.5rem;
+            border-bottom: 1px solid #444;
+            font-size: 0.8rem;
+        }
+
+        /* Slide 5 - More HR Cases */
+        .slide-5 {
+            background: var(--monday-light);
+        }
+
+        .slide-5 .use-case-detailed {
+            background: var(--white);
+            border: 1px solid #e0e0e0;
+        }
+
+        .slide-5 .use-case-title-group h3 {
+            color: var(--monday-dark);
+        }
+
+        .slide-5 .use-case-subtitle {
+            color: #666;
+        }
+
+        .slide-5 .use-case-description {
+            color: var(--monday-dark);
+        }
+
+        .slide-5 .use-case-description strong {
+            color: var(--monday-purple);
+        }
+
+        .slide-5 .use-case-visual {
+            background: var(--monday-light);
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Slide 6 - Legal Cases */
+        .slide-6 {
+            background: var(--monday-dark);
+            color: var(--white);
+        }
+
+        /* Slide 7 - Workflow Example */
+        .slide-7 {
+            background: linear-gradient(135deg, var(--monday-green) 0%, #00a85f 100%);
+            color: var(--white);
+        }
+
+        .workflow-container {
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .workflow-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .workflow-step {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .workflow-step:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-8px);
+        }
+
+        .workflow-step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--monday-yellow);
+            color: var(--monday-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.8rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .workflow-step h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .workflow-step p {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .workflow-arrow {
+            position: absolute;
+            right: -1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Slide 8 - Getting Started */
+        .slide-8 {
+            background: var(--monday-light);
+        }
+
+        .getting-started-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .getting-started-card {
+            background: var(--white);
+            border-radius: 32px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .getting-started-card h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--monday-dark);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .getting-started-card .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .getting-started-card:nth-child(1) .icon {
+            background: linear-gradient(135deg, var(--monday-purple), var(--monday-red));
+        }
+
+        .getting-started-card:nth-child(2) .icon {
+            background: linear-gradient(135deg, var(--monday-green), var(--monday-yellow));
+        }
+
+        .getting-started-steps {
+            list-style: none;
+        }
+
+        .getting-started-steps li {
+            padding: 1.2rem 0;
+            border-bottom: 1px solid var(--monday-light);
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.1rem;
+            color: var(--monday-dark);
+            line-height: 1.7;
+        }
+
+        .getting-started-steps li:last-child {
+            border-bottom: none;
+        }
+
+        .getting-started-steps li strong {
+            color: var(--monday-purple);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .getting-started-steps code {
+            background: var(--monday-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            color: var(--monday-purple);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Slide 9 - CTA */
+        .slide-9 {
+            background: linear-gradient(135deg, var(--monday-dark) 0%, #0a0c1f 100%);
+            color: var(--white);
+        }
+
+        .cta-container {
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .cta-container h2 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .cta-container p {
+            font-size: 1.5rem;
+            font-family: 'Crimson Pro', serif;
+            color: var(--monday-light);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 1.5rem 3rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .cta-btn.primary {
+            background: var(--monday-purple);
+            color: var(--white);
+            border: 2px solid var(--monday-purple);
+        }
+
+        .cta-btn.primary:hover {
+            background: transparent;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(97, 97, 255, 0.4);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .cta-btn.secondary:hover {
+            background: var(--white);
+            color: var(--monday-dark);
+            transform: translateY(-4px);
+        }
+
+        .footer-note {
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: 'Crimson Pro', serif;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .ecosystem-grid,
+            .skills-grid,
+            .use-case-content,
+            .workflow-steps,
+            .getting-started-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+
+            .ecosystem-header h2,
+            .skills-header h2,
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-dots {
+                display: none;
+            }
+
+            .slide {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Slide 1: Hero -->
+        <section class="slide slide-1" data-slide="0">
+            <div class="hero-content">
+                <h1>The Claude Ecosystem for HR & Legal Leaders</h1>
+                <p class="hero-subtitle">A comprehensive guide for Chief People and Legal Officers at monday.com</p>
+                <div class="hero-badges">
+                    <span class="hero-badge primary">Claude Chat • Claude Code • Claude Cowork</span>
+                    <span class="hero-badge secondary">Practical Applications & Workflows</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 2: The Ecosystem -->
+        <section class="slide slide-2" data-slide="1">
+            <div class="ecosystem-container">
+                <div class="ecosystem-header">
+                    <h2>Understanding the Claude Ecosystem</h2>
+                    <p>Three distinct tools designed for different workflows</p>
+                </div>
+                <div class="ecosystem-grid">
+                    <div class="ecosystem-card">
+                        <div class="ecosystem-icon">💬</div>
+                        <h3>Claude Chat</h3>
+                        <p class="subtitle">Web-based conversational AI for general queries, content creation, and strategic thinking.</p>
+                        <ul class="ecosystem-features">
+                            <li>Accessible via browser at claude.ai</li>
+                            <li>Natural conversation interface</li>
+                            <li>Document uploads & analysis</li>
+                            <li>Artifacts for interactive content</li>
+                            <li>No technical setup required</li>
+                        </ul>
+                        <div class="best-for">
+                            <strong>Best For:</strong>
+                            <p>Drafting emails, brainstorming policies, reviewing contracts, getting advice on HR/legal matters, content generation</p>
+                        </div>
+                    </div>
+
+                    <div class="ecosystem-card">
+                        <div class="ecosystem-icon">⚡</div>
+                        <h3>Claude Code</h3>
+                        <p class="subtitle">Command-line AI agent that can read, write, and execute code on your local machine.</p>
+                        <ul class="ecosystem-features">
+                            <li>Terminal/CLI interface</li>
+                            <li>Direct file system access</li>
+                            <li>Executes commands & scripts</li>
+                            <li>Specialized skills (/simplify, /api)</li>
+                            <li>Automation capabilities</li>
+                        </ul>
+                        <div class="best-for">
+                            <strong>Best For:</strong>
+                            <p>Batch processing employee data, automating policy updates across files, generating reports from CSVs, building custom HR tools</p>
+                        </div>
+                    </div>
+
+                    <div class="ecosystem-card">
+                        <div class="ecosystem-icon">👥</div>
+                        <h3>Claude Cowork</h3>
+                        <p class="subtitle">Team collaboration workspace where multiple people can work together with Claude on shared projects.</p>
+                        <ul class="ecosystem-features">
+                            <li>Web-based team workspace</li>
+                            <li>Shared project context</li>
+                            <li>Multi-user collaboration</li>
+                            <li>Project memory & continuity</li>
+                            <li>Team knowledge sharing</li>
+                        </ul>
+                        <div class="best-for">
+                            <strong>Best For:</strong>
+                            <p>Cross-functional HR/Legal projects, team policy development, collaborative document review, maintaining institutional knowledge</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: Skills for Chief People & Legal Officers -->
+        <section class="slide slide-3" data-slide="2">
+            <div class="skills-container">
+                <div class="skills-header">
+                    <h2>Essential Skills for HR & Legal Professionals</h2>
+                    <p>Claude Code skills specifically relevant to your role</p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-slash">/simplify</div>
+                            <div class="skill-name">Code & Script Review</div>
+                        </div>
+                        <p class="skill-desc">Review and optimize automation scripts, Excel macros, or data processing workflows used by your teams. Improve efficiency and reduce errors in HR/Legal operations.</p>
+                        <div class="skill-examples">
+                            <strong>HR/Legal Applications:</strong>
+                            <ul>
+                                <li>Optimize employee data processing scripts</li>
+                                <li>Review payroll automation workflows</li>
+                                <li>Simplify compliance reporting tools</li>
+                                <li>Audit data privacy scripts</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-slash">/claude-api</div>
+                            <div class="skill-name">Custom AI Applications</div>
+                        </div>
+                        <p class="skill-desc">Build custom AI-powered tools for your organization using the Claude API. Create specialized chatbots, document analyzers, or workflow automation tailored to monday.com's needs.</p>
+                        <div class="skill-examples">
+                            <strong>HR/Legal Applications:</strong>
+                            <ul>
+                                <li>Employee helpdesk chatbot for HR policies</li>
+                                <li>Contract clause extraction system</li>
+                                <li>Automated compliance checker</li>
+                                <li>Resume screening assistant</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-slash">/frontend-design</div>
+                            <div class="skill-name">Internal Tools & Dashboards</div>
+                        </div>
+                        <p class="skill-desc">Create production-grade web interfaces for internal HR and legal tools. Build employee portals, policy hubs, compliance dashboards, or data visualization tools.</p>
+                        <div class="skill-examples">
+                            <strong>HR/Legal Applications:</strong>
+                            <ul>
+                                <li>Employee self-service portal</li>
+                                <li>Legal policy documentation hub</li>
+                                <li>Diversity & inclusion dashboard</li>
+                                <li>Onboarding progress tracker</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-slash">/ax-sql</div>
+                            <div class="skill-name">Usage Analytics</div>
+                        </div>
+                        <p class="skill-desc">Analyze Claude Code usage patterns across your team with SQL queries. Track productivity, identify common use cases, and measure ROI of AI adoption.</p>
+                        <div class="skill-examples">
+                            <strong>HR/Legal Applications:</strong>
+                            <ul>
+                                <li>Track AI tool adoption rates</li>
+                                <li>Measure time savings per department</li>
+                                <li>Identify most common queries</li>
+                                <li>Generate usage reports for leadership</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-slash">Data Processing</div>
+                            <div class="skill-name">Employee Data Analysis</div>
+                        </div>
+                        <p class="skill-desc">Process employee data files (CSV, Excel, JSON) to generate insights, reports, and visualizations. Perform complex data transformations while maintaining privacy and security.</p>
+                        <div class="skill-examples">
+                            <strong>HR/Legal Applications:</strong>
+                            <ul>
+                                <li>Compensation analysis & equity reviews</li>
+                                <li>Headcount reporting & forecasting</li>
+                                <li>Diversity metrics calculation</li>
+                                <li>Performance review aggregation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-slash">Document Ops</div>
+                            <div class="skill-name">Bulk Document Operations</div>
+                        </div>
+                        <p class="skill-desc">Perform batch operations on multiple documents: search & replace, format standardization, metadata extraction, or content analysis across your entire document library.</p>
+                        <div class="skill-examples">
+                            <strong>HR/Legal Applications:</strong>
+                            <ul>
+                                <li>Update policy docs with new terminology</li>
+                                <li>Extract clauses from 100+ contracts</li>
+                                <li>Standardize employee handbook format</li>
+                                <li>Audit NDAs for compliance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: Deep HR Use Cases -->
+        <section class="slide slide-4" data-slide="3">
+            <div class="hr-cases-container">
+                <div class="section-header">
+                    <h2>Deep Dive: HR Use Cases</h2>
+                    <p>Real-world scenarios with practical implementations</p>
+                </div>
+
+                <div class="use-case-detailed">
+                    <div class="use-case-header">
+                        <div class="use-case-number">1</div>
+                        <div class="use-case-title-group">
+                            <h3>Compensation Equity Analysis</h3>
+                            <p class="use-case-subtitle">Analyze pay equity across departments, roles, and demographics</p>
+                        </div>
+                    </div>
+                    <div class="use-case-content">
+                        <div class="use-case-description">
+                            <p>As Chief People Officer, you need to regularly analyze compensation data to ensure pay equity across gender, ethnicity, departments, and roles. Claude Code can process sensitive payroll data locally (maintaining privacy), perform statistical analysis, and generate detailed reports.</p>
+
+                            <strong>What Claude Code Does:</strong>
+                            <ul>
+                                <li>Reads employee compensation data from secure CSV files</li>
+                                <li>Performs statistical analysis (mean, median, percentiles by cohort)</li>
+                                <li>Identifies pay gaps exceeding defined thresholds</li>
+                                <li>Generates executive summary reports with recommendations</li>
+                                <li>Creates visualizations for board presentations</li>
+                            </ul>
+
+                            <strong>Time Saved:</strong>
+                            <ul>
+                                <li>Manual analysis: 4-6 hours</li>
+                                <li>With Claude Code: 15 minutes</li>
+                            </ul>
+                        </div>
+                        <div class="use-case-visual">
+                            <div class="terminal-window">
+                                <div class="terminal-header">
+                                    <div class="terminal-dot"></div>
+                                    <div class="terminal-dot"></div>
+                                    <div class="terminal-dot"></div>
+                                    <div class="terminal-title">Terminal — claude</div>
+                                </div>
+                                <div class="terminal-content">
+                                    <div><span class="terminal-prompt">You:</span> <span class="terminal-command">Analyze compensation_2026_Q1.csv and identify any pay gaps by gender and department. Flag gaps > 5%.</span></div>
+                                    <div class="terminal-output">
+<br>Reading compensation data...<br>
+Analyzing 847 employees across 12 departments...<br><br>
+<span class="terminal-success">✓ Analysis complete</span>
+                                    </div>
+                                    <div class="data-preview">
+<strong>PAY EQUITY ANALYSIS - Q1 2026</strong><br><br>
+<table class="data-table">
+<tr><th>Department</th><th>Gender Gap</th><th>Status</th></tr>
+<tr><td>Engineering</td><td>2.3%</td><td>✓ Within range</td></tr>
+<tr><td>Sales</td><td>7.1%</td><td>⚠️ Review needed</td></tr>
+<tr><td>Product</td><td>1.8%</td><td>✓ Within range</td></tr>
+</table>
+<br>
+📊 Full report: compensation_analysis_Q1.pdf
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: More HR Cases -->
+        <section class="slide slide-5" data-slide="4">
+            <div class="hr-cases-container">
+                <div class="section-header">
+                    <h2 style="color: var(--monday-dark);">HR Use Cases (Continued)</h2>
+                </div>
+
+                <div class="use-case-detailed">
+                    <div class="use-case-header">
+                        <div class="use-case-number">2</div>
+                        <div class="use-case-title-group">
+                            <h3>Employee Handbook Multi-Language Updates</h3>
+                            <p class="use-case-subtitle">Update policies across 15+ language versions simultaneously</p>
+                        </div>
+                    </div>
+                    <div class="use-case-content">
+                        <div class="use-case-description">
+                            <p>monday.com operates globally with employees in multiple countries. When you update the remote work policy, you need to ensure consistency across all language versions of the employee handbook.</p>
+
+                            <strong>The Challenge:</strong>
+                            <ul>
+                                <li>15 different language versions of the handbook</li>
+                                <li>Policy changes need to be reflected accurately in each</li>
+                                <li>Maintaining consistent legal terminology</li>
+                                <li>Version control and change tracking</li>
+                            </ul>
+
+                            <strong>What Claude Code Does:</strong>
+                            <ul>
+                                <li>Identifies the specific section to update across all files</li>
+                                <li>Applies changes while preserving language-specific formatting</li>
+                                <li>Generates a diff/changelog for legal review</li>
+                                <li>Creates a summary of all changes made</li>
+                            </ul>
+
+                            <strong>Real Example:</strong>
+                            <p style="margin-top: 1rem; font-style: italic;">"Update the vacation policy section in all employee handbooks to reflect the new 25-day PTO policy, effective April 1, 2026. Ensure legal disclaimer is added in each language."</p>
+                        </div>
+                        <div class="use-case-visual">
+                            <div class="terminal-window">
+                                <div class="terminal-header">
+                                    <div class="terminal-dot"></div>
+                                    <div class="terminal-dot"></div>
+                                    <div class="terminal-dot"></div>
+                                    <div class="terminal-title">Terminal — claude</div>
+                                </div>
+                                <div class="terminal-content">
+                                    <div><span class="terminal-prompt">You:</span> <span class="terminal-command">Update vacation policy to 25 days in all handbook versions in /handbooks/</span></div>
+                                    <div class="terminal-output">
+<br>Scanning handbook directory...<br>
+Found 15 language versions<br><br>
+Updating:<br>
+  ✓ handbook_en.md - Updated section 4.2<br>
+  ✓ handbook_es.md - Updated section 4.2<br>
+  ✓ handbook_de.md - Updated section 4.2<br>
+  ✓ handbook_fr.md - Updated section 4.2<br>
+  ✓ handbook_he.md - Updated section 4.2<br>
+  ... (10 more files)<br><br>
+<span class="terminal-success">✓ All 15 files updated</span><br>
+📄 Change log: policy_update_changelog.md
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="use-case-detailed" style="margin-top: 2rem;">
+                    <div class="use-case-header">
+                        <div class="use-case-number">3</div>
+                        <div class="use-case-title-group">
+                            <h3>Diversity & Inclusion Metrics Dashboard</h3>
+                            <p class="use-case-subtitle">Automated quarterly D&I reporting for leadership and board</p>
+                        </div>
+                    </div>
+                    <div class="use-case-content">
+                        <div class="use-case-description">
+                            <p>Track and report on diversity metrics across hiring, promotions, retention, and leadership representation. Generate board-ready reports with visualizations.</p>
+
+                            <strong>Metrics Tracked:</strong>
+                            <ul>
+                                <li>Demographic breakdown by level & department</li>
+                                <li>Hiring funnel diversity (applications → offers)</li>
+                                <li>Promotion rates by demographic group</li>
+                                <li>Retention & attrition analysis</li>
+                                <li>Pay equity by intersection (gender × ethnicity)</li>
+                                <li>Leadership representation trends</li>
+                            </ul>
+
+                            <strong>What Claude Code Does:</strong>
+                            <ul>
+                                <li>Aggregates data from HRIS, ATS, and payroll systems</li>
+                                <li>Calculates trend analysis quarter-over-quarter</li>
+                                <li>Generates executive summary and detailed reports</li>
+                                <li>Creates interactive HTML dashboard</li>
+                                <li>Flags areas requiring attention</li>
+                            </ul>
+                        </div>
+                        <div class="use-case-visual">
+                            <div class="terminal-window">
+                                <div class="terminal-header">
+                                    <div class="terminal-dot"></div>
+                                    <div class="terminal-dot"></div>
+                                    <div class="terminal-dot"></div>
+                                    <div class="terminal-title">Terminal — claude</div>
+                                </div>
+                                <div class="terminal-content">
+                                    <div><span class="terminal-prompt">You:</span> <span class="terminal-command">Generate Q1 2026 D&I report from employee_data.csv and hiring_data.csv</span></div>
+                                    <div class="terminal-output">
+<br>Processing employee data (847 records)...<br>
+Processing hiring data (234 candidates)...<br>
+Calculating metrics...<br><br>
+<span class="terminal-success">✓ Analysis complete</span>
+                                    </div>
+                                    <div class="data-preview">
+<strong>D&I METRICS SUMMARY - Q1 2026</strong><br><br>
+<strong>Women in Leadership:</strong> 38% (+3% vs Q4)<br>
+<strong>Hiring Diversity:</strong> 47% underrepresented groups<br>
+<strong>Promotion Equity:</strong> ✓ No significant gaps<br>
+<strong>Retention (URG):</strong> 94% (↓2% - needs attention)<br><br>
+📊 Full dashboard: di_dashboard_Q1.html<br>
+📄 Executive summary: di_summary_Q1.pdf
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6: Legal Use Cases -->
+        <section class="slide slide-6" data-slide="5">
+            <div class="hr-cases-container">
+                <div class="section-header">
+                    <h2>Deep Dive: Legal Use Cases</h2>
+                    <p>Practical applications for Legal Operations</p>
+                </div>
+
+                <div class="use-case-detailed">
+                    <div class="use-case-header">
+                        <div class="use-case-number">1</div>
+                        <div class="use-case-title-group">
+                            <h3>Contract Clause Extraction & Analysis</h3>
+                            <p class="use-case-subtitle">Extract and analyze specific clauses from hundreds of contracts</p>
+                        </div>
+                    </div>
+                    <div class="use-case-content">
+                        <div class="use-case-description">
+                            <p>You need to audit all vendor contracts for specific clauses (e.g., liability caps, termination terms, data privacy obligations). Instead of manually reviewing 200+ contracts, Claude Code can extract and analyze them systematically.</p>
+
+                            <strong>What Claude Code Does:</strong>
+                            <ul>
+                                <li>Reads PDF contracts and extracts text</li>
+                                <li>Identifies relevant clauses using legal terminology</li>
+                                <li>Compares against your standard template</li>
+                                <li>Flags non-standard or missing clauses</li>
+                                <li>Generates summary report with risk assessment</li>
+                            </ul>
+
+                            <strong>Use Cases:</strong>
+                            <ul>
+                                <li>GDPR compliance audit across all data processors</li>
+                                <li>Liability cap review for insurance purposes</li>
+                                <li>Termination clause standardization</li>
+                                <li>Indemnification language verification</li>
+                            </ul>
+                        </div>
+                        <div class="use-case-visual">
+                            <div class="terminal-window">
+                                <div class="terminal-header">
+                                    <div class="terminal-dot"></div>
+                                    <div class="terminal-dot"></div>
+                                    <div class="terminal-dot"></div>
+                                    <div class="terminal-title">Terminal — claude</div>
+                                </div>
+                                <div class="terminal-content">
+                                    <div><span class="terminal-prompt">You:</span> <span class="terminal-command">Review all PDFs in /contracts/vendors/ and extract liability cap clauses. Flag any caps > $1M.</span></div>
+                                    <div class="terminal-output">
+<br>Scanning contracts directory...<br>
+Found 187 vendor contracts<br>
+Processing...<br><br>
+Analyzed: 187 contracts<br>
+Liability caps found: 179<br>
+<span style="color: var(--monday-red);">⚠️  Flagged for review: 12 contracts</span><br><br>
+<strong>HIGH RISK:</strong><br>
+- TechVendor_2025.pdf: $5M cap<br>
+- DataCorp_2024.pdf: Unlimited liability<br>
+- CloudServices_2026.pdf: $3M cap<br><br>
+📊 Full report: liability_audit_2026.xlsx
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="use-case-detailed" style="margin-top: 2rem;">
+                    <div class="use-case-header">
+                        <div class="use-case-number">2</div>
+                        <div class="use-case-title-group">
+                            <h3>Compliance Documentation Generator</h3>
+                            <p class="use-case-subtitle">Automate creation of compliance documentation for multiple jurisdictions</p>
+                        </div>
+                    </div>
+                    <div class="use-case-content">
+                        <div class="use-case-description">
+                            <p>Generate jurisdiction-specific privacy notices, terms of service, or employment disclosures based on templates and local regulations.</p>
+
+                            <strong>What Claude Code Does:</strong>
+                            <ul>
+                                <li>Reads your master template and legal requirements database</li>
+                                <li>Generates customized documents per jurisdiction</li>
+                                <li>Ensures all required disclosures are included</li>
+                                <li>Maintains consistent formatting and branding</li>
+                                <li>Creates change logs for legal review</li>
+                            </ul>
+
+                            <strong>Example:</strong>
+                            <p style="margin-top: 1rem; font-style: italic;">"Generate privacy notices for our new product launch in EU, California, and Israel, based on our standard template and current regulations."</p>
+                        </div>
+                        <div class="use-case-visual">
+                            <div class="terminal-window">
+                                <div class="terminal-header">
+                                    <div class="terminal-dot"></div>
+                                    <div class="terminal-dot"></div>
+                                    <div class="terminal-dot"></div>
+                                    <div class="terminal-title">Terminal — claude</div>
+                                </div>
+                                <div class="terminal-content">
+                                    <div><span class="terminal-prompt">You:</span> <span class="terminal-command">Generate GDPR-compliant employee data processing notice for our new HRIS system</span></div>
+                                    <div class="terminal-output">
+<br>Reading template: templates/gdpr_notice.md<br>
+Reading company data: company_info.json<br>
+Reading HRIS specs: hris_data_flows.yml<br><br>
+Generating notice...<br>
+Including required GDPR elements:<br>
+  ✓ Data controller information<br>
+  ✓ Legal basis for processing<br>
+  ✓ Categories of personal data<br>
+  ✓ Retention periods<br>
+  ✓ Data subject rights<br>
+  ✓ International transfers<br><br>
+<span class="terminal-success">✓ Notice generated</span><br>
+📄 Output: employee_data_notice_gdpr.pdf<br>
+📄 Plain language summary: notice_summary.md
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: Real Workflow Example -->
+        <section class="slide slide-7" data-slide="6">
+            <div class="workflow-container">
+                <div class="section-header">
+                    <h2>Real-World Workflow: Quarterly Compensation Review</h2>
+                    <p>End-to-end process using Claude Code, Chat, and Cowork together</p>
+                </div>
+                <div class="workflow-steps">
+                    <div class="workflow-step" style="position: relative;">
+                        <div class="workflow-step-number">1</div>
+                        <h4>Data Processing</h4>
+                        <p>Use <strong>Claude Code</strong> to process compensation data from HRIS, calculate equity metrics, identify outliers, and generate initial analysis.</p>
+                        <div class="workflow-arrow">→</div>
+                    </div>
+                    <div class="workflow-step" style="position: relative;">
+                        <div class="workflow-step-number">2</div>
+                        <h4>Strategy Discussion</h4>
+                        <p>Use <strong>Claude Chat</strong> to discuss findings, explore policy implications, draft recommendations, and prepare executive summary.</p>
+                        <div class="workflow-arrow">→</div>
+                    </div>
+                    <div class="workflow-step" style="position: relative;">
+                        <div class="workflow-step-number">3</div>
+                        <h4>Team Collaboration</h4>
+                        <p>Use <strong>Claude Cowork</strong> with your HR and Legal team to review recommendations, align on adjustments, and finalize action plan.</p>
+                        <div class="workflow-arrow">→</div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="workflow-step-number">4</div>
+                        <h4>Implementation</h4>
+                        <p>Use <strong>Claude Code</strong> again to generate adjustment letters, update documentation, and create audit trail for compliance.</p>
+                    </div>
+                </div>
+
+                <div class="use-case-detailed" style="margin-top: 3rem;">
+                    <div class="use-case-title-group">
+                        <h3 style="text-align: center; margin-bottom: 2rem;">Complete Workflow Breakdown</h3>
+                    </div>
+                    <div class="use-case-content">
+                        <div class="use-case-description">
+                            <strong>Step 1: Claude Code - Data Analysis</strong>
+                            <ul>
+                                <li>Process Q1_compensation.csv (847 employees)</li>
+                                <li>Calculate pay equity metrics by gender, level, department</li>
+                                <li>Identify 23 employees with potential equity issues</li>
+                                <li>Generate statistical report and visualizations</li>
+                            </ul>
+
+                            <strong>Step 2: Claude Chat - Strategic Planning</strong>
+                            <ul>
+                                <li>Upload the analysis report</li>
+                                <li>Discuss root causes and systemic patterns</li>
+                                <li>Draft policy recommendations</li>
+                                <li>Prepare board presentation talking points</li>
+                            </ul>
+                        </div>
+                        <div class="use-case-description">
+                            <strong>Step 3: Claude Cowork - Team Alignment</strong>
+                            <ul>
+                                <li>Share project with VP HR and General Counsel</li>
+                                <li>Collaboratively review each flagged case</li>
+                                <li>Align on adjustment amounts and timing</li>
+                                <li>Document decisions and rationale</li>
+                            </ul>
+
+                            <strong>Step 4: Claude Code - Implementation</strong>
+                            <ul>
+                                <li>Generate personalized adjustment letters (23 employees)</li>
+                                <li>Update compensation records</li>
+                                <li>Create audit documentation</li>
+                                <li>Generate summary for finance team</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 8: Getting Started -->
+        <section class="slide slide-8" data-slide="7">
+            <div class="ecosystem-container">
+                <div class="ecosystem-header">
+                    <h2 style="color: var(--monday-dark);">Getting Started Guide</h2>
+                    <p style="color: #666;">Choose the right tool for your workflow</p>
+                </div>
+                <div class="getting-started-grid">
+                    <div class="getting-started-card">
+                        <h3>
+                            <div class="icon">⚡</div>
+                            Claude Code
+                        </h3>
+                        <ol class="getting-started-steps">
+                            <li><strong>Install:</strong> Download Claude CLI and run <code>claude --version</code> to verify</li>
+                            <li><strong>Navigate:</strong> Use <code>cd</code> to go to your project directory (e.g., <code>cd ~/Documents/HR_Data</code>)</li>
+                            <li><strong>Launch:</strong> Type <code>claude</code> to start a session</li>
+                            <li><strong>Example task:</strong> "Analyze compensation_2026.csv and calculate median salary by department"</li>
+                            <li><strong>Use skills:</strong> Type <code>/simplify</code> to review scripts, or <code>/frontend-design</code> to build tools</li>
+                            <li><strong>Security:</strong> All data stays local on your machine - nothing sent to cloud except your queries</li>
+                        </ol>
+                    </div>
+
+                    <div class="getting-started-card">
+                        <h3>
+                            <div class="icon">👥</div>
+                            Claude Cowork
+                        </h3>
+                        <ol class="getting-started-steps">
+                            <li><strong>Access:</strong> Visit claude.ai and select "Cowork" from the workspace menu</li>
+                            <li><strong>Create project:</strong> Start a new project for your initiative (e.g., "Q1 Comp Review 2026")</li>
+                            <li><strong>Invite team:</strong> Add your HR and Legal team members to the project</li>
+                            <li><strong>Build context:</strong> Upload relevant documents, policies, and data for shared reference</li>
+                            <li><strong>Collaborate:</strong> All team members can ask questions, review Claude's work, and build on each other's progress</li>
+                            <li><strong>Maintain continuity:</strong> Claude remembers your project context across sessions and team members</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="use-case-detailed" style="margin-top: 3rem; background: var(--white);">
+                    <div class="use-case-title-group">
+                        <h3 style="text-align: center; color: var(--monday-dark);">Decision Matrix: Which Tool to Use?</h3>
+                    </div>
+                    <div class="use-case-content" style="margin-top: 2rem;">
+                        <div class="use-case-description" style="color: var(--monday-dark);">
+                            <strong>Use Claude Chat when:</strong>
+                            <ul>
+                                <li>Drafting emails, policies, or communications</li>
+                                <li>Getting advice on HR/legal matters</li>
+                                <li>Reviewing a single document or contract</li>
+                                <li>Brainstorming solutions or strategies</li>
+                                <li>No file system access needed</li>
+                            </ul>
+
+                            <strong>Use Claude Code when:</strong>
+                            <ul>
+                                <li>Processing employee data files (CSV, Excel)</li>
+                                <li>Batch operations on multiple files</li>
+                                <li>Building automation scripts or tools</li>
+                                <li>Generating reports from data</li>
+                                <li>You need file system access and code execution</li>
+                            </ul>
+                        </div>
+                        <div class="use-case-description" style="color: var(--monday-dark);">
+                            <strong>Use Claude Cowork when:</strong>
+                            <ul>
+                                <li>Cross-functional team projects (HR + Legal)</li>
+                                <li>Projects requiring multiple review cycles</li>
+                                <li>Building institutional knowledge base</li>
+                                <li>Long-running initiatives with many stakeholders</li>
+                                <li>You need shared context across team members</li>
+                            </ul>
+
+                            <strong>Use them together when:</strong>
+                            <ul>
+                                <li>Complex projects with data + strategy + collaboration</li>
+                                <li>Example: Compensation review (Code for data → Chat for strategy → Cowork for team alignment)</li>
+                                <li>Building and deploying internal tools (Code to build → Cowork to gather requirements)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 9: CTA -->
+        <section class="slide slide-9" data-slide="8">
+            <div class="cta-container">
+                <h2>Ready to Transform Your HR & Legal Operations?</h2>
+                <p>Start leveraging the Claude ecosystem to automate repetitive tasks, make data-driven decisions, and free up time for strategic work that matters.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="cta-btn primary" onclick="alert('Visit claude.ai to get started with Claude Chat and Cowork, or install Claude CLI for Claude Code capabilities!'); return false;">Get Started</a>
+                    <a href="#" class="cta-btn secondary" onclick="alert('Contact your IT team or visit docs.anthropic.com for comprehensive documentation'); return false;">View Documentation</a>
+                </div>
+                <p class="footer-note">Built with Claude Code using the /frontend-design skill • Following monday.com brand guidelines<br>For Chief People and Legal Officers at monday.com</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+        <div class="nav-dot active" onclick="scrollToSlide(0)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(1)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(2)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(3)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(4)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(5)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(6)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(7)"></div>
+        <div class="nav-dot" onclick="scrollToSlide(8)"></div>
+    </div>
+
+    <script>
+        // Navigation
+        function scrollToSlide(index) {
+            const slides = document.querySelectorAll('.slide');
+            slides[index].scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Update active dot on scroll
+        const container = document.querySelector('.presentation-container');
+        const dots = document.querySelectorAll('.nav-dot');
+        const slides = document.querySelectorAll('.slide');
+
+        container.addEventListener('scroll', () => {
+            const scrollPosition = container.scrollTop + window.innerHeight / 2;
+
+            slides.forEach((slide, index) => {
+                const slideTop = slide.offsetTop;
+                const slideBottom = slideTop + slide.offsetHeight;
+
+                if (scrollPosition >= slideTop && scrollPosition < slideBottom) {
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    dots[index].classList.add('active');
+                }
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const currentSlide = parseInt(document.querySelector('.nav-dot.active').getAttribute('onclick').match(/\d+/)[0]);
+
+            if (e.key === 'ArrowDown' && currentSlide < 8) {
+                scrollToSlide(currentSlide + 1);
+            } else if (e.key === 'ArrowUp' && currentSlide > 0) {
+                scrollToSlide(currentSlide - 1);
+            }
+        });
+    </script>
+</body>
+</html>
