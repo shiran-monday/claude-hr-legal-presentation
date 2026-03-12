@@ -30,6 +30,8 @@
             color: var(--monday-dark);
             overflow-x: hidden;
             scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .presentation-container {
@@ -81,6 +83,40 @@
         .nav-dot:hover {
             background: var(--monday-purple);
             transform: scale(1.2);
+        }
+
+        /* Mobile scroll indicator */
+        .mobile-scroll-indicator {
+            display: none;
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            text-align: center;
+            animation: bounce 2s infinite;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
         }
 
         /* Slide 1 - Hero */
@@ -962,6 +998,10 @@
             .section-header h2 {
                 font-size: 2.5rem;
             }
+
+            .use-case-content {
+                gap: 1.5rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -969,8 +1009,222 @@
                 display: none;
             }
 
+            .mobile-scroll-indicator {
+                display: block;
+            }
+
             .slide {
-                padding: 3rem 1rem;
+                padding: 2rem 1rem;
+                min-height: auto;
+                scroll-snap-align: none;
+            }
+
+            .presentation-container {
+                scroll-snap-type: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-badges {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-badge {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .ecosystem-header h2,
+            .skills-header h2,
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .ecosystem-header p,
+            .skills-header p,
+            .section-header p {
+                font-size: 1.1rem;
+            }
+
+            .ecosystem-card,
+            .skill-card,
+            .use-case-detailed,
+            .getting-started-card {
+                padding: 2rem;
+            }
+
+            .ecosystem-card h3,
+            .skill-name {
+                font-size: 1.5rem;
+            }
+
+            .ecosystem-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+
+            .use-case-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .use-case-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .use-case-title-group h3 {
+                font-size: 1.6rem;
+            }
+
+            .use-case-subtitle {
+                font-size: 1rem;
+            }
+
+            .terminal-window,
+            .screenshot {
+                font-size: 0.75rem;
+            }
+
+            .terminal-content,
+            .screenshot-content {
+                padding: 1rem;
+            }
+
+            .data-preview {
+                overflow-x: auto;
+                font-size: 0.7rem;
+            }
+
+            .data-table {
+                min-width: 500px;
+            }
+
+            .workflow-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .workflow-step {
+                padding: 2rem;
+            }
+
+            .workflow-arrow {
+                display: none;
+            }
+
+            .cta-container h2 {
+                font-size: 2.5rem;
+            }
+
+            .cta-container p {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .cta-btn {
+                padding: 1.2rem 2rem;
+                font-size: 1rem;
+                width: 100%;
+            }
+
+            .best-for,
+            .skill-examples {
+                padding: 1rem;
+            }
+
+            .skill-slash {
+                font-size: 1.5rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .getting-started-steps li {
+                font-size: 1rem;
+                padding: 1rem 0;
+            }
+
+            .getting-started-card h3 {
+                font-size: 1.5rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+
+            .getting-started-card .icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slide {
+                padding: 1.5rem 0.75rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .ecosystem-header h2,
+            .skills-header h2,
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+
+            .ecosystem-card,
+            .skill-card,
+            .use-case-detailed,
+            .getting-started-card {
+                padding: 1.5rem;
+                border-radius: 20px;
+            }
+
+            .use-case-title-group h3 {
+                font-size: 1.3rem;
+            }
+
+            .terminal-content,
+            .screenshot-content {
+                font-size: 0.7rem;
+                padding: 0.8rem;
+            }
+
+            .cta-container h2 {
+                font-size: 2rem;
+            }
+
+            .cta-container p {
+                font-size: 1rem;
+            }
+
+            .workflow-step-number,
+            .use-case-number {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+
+            .footer-note {
+                font-size: 0.75rem;
+                margin-top: 2rem;
             }
         }
     </style>
@@ -1677,6 +1931,14 @@ Including required GDPR elements:<br>
         <div class="nav-dot" onclick="scrollToSlide(8)"></div>
     </div>
 
+    <!-- Mobile Scroll Indicator -->
+    <div class="mobile-scroll-indicator">
+        <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4l-8 8h6v8h4v-8h6z" transform="rotate(180 12 12)"/>
+        </svg>
+        Scroll
+    </div>
+
     <script>
         // Navigation
         function scrollToSlide(index) {
@@ -1713,6 +1975,27 @@ Including required GDPR elements:<br>
                 scrollToSlide(currentSlide - 1);
             }
         });
+
+        // Hide mobile scroll indicator after first scroll
+        let hasScrolled = false;
+        const mobileIndicator = document.querySelector('.mobile-scroll-indicator');
+
+        container.addEventListener('scroll', () => {
+            if (!hasScrolled && container.scrollTop > 50) {
+                hasScrolled = true;
+                if (mobileIndicator) {
+                    mobileIndicator.style.opacity = '0';
+                    setTimeout(() => {
+                        mobileIndicator.style.display = 'none';
+                    }, 300);
+                }
+            }
+        });
+
+        // Add touch-friendly scroll on mobile
+        if ('ontouchstart' in window) {
+            document.body.style.webkitOverflowScrolling = 'touch';
+        }
     </script>
 </body>
 </html>
